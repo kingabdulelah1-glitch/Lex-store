@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FiveM Marketplace – Test</title>
+<style>
+:root{--bg:#17191D;--bg2:#22252B;--card:#292D34;--text:#F5F6F8;--muted:#A7ADB7;--accent:#8BBDEB;--line:#383D46;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Segoe UI",Tahoma,system-ui,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(23,25,29,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.logo{font-weight:700;letter-spacing:.08em;font-size:15px}
+.logo span{color:var(--accent)}
+.tools{display:flex;gap:8px}
+.chip{background:var(--bg2);border:1px solid var(--line);color:var(--text);border-radius:999px;padding:6px 14px;font-size:13px;cursor:pointer;transition:border-color .2s}
+.chip:hover{border-color:var(--accent)}
+.hero{padding:56px 0 40px;background:radial-gradient(900px 340px at 70% 0,rgba(139,189,235,.12),transparent)}
+.hero .wrap{display:grid;gap:32px;grid-template-columns:1.1fr .9fr;align-items:center}
+h1{font-size:clamp(34px,6vw,60px);line-height:1.05;margin:0 0 14px;letter-spacing:.02em}
+.sub{color:var(--muted);font-size:18px;margin:0 0 26px}
+.btn{display:inline-block;padding:12px 24px;border-radius:12px;font-weight:600;font-size:15px;margin-inline-end:10px;margin-bottom:10px;transition:transform .2s,box-shadow .2s;cursor:pointer;border:1px solid var(--line)}
+.btn:hover{transform:translateY(-2px)}
+.primary{background:var(--accent);color:#17191D;border-color:var(--accent);box-shadow:0 6px 20px rgba(139,189,235,.2)}
+.ghost{background:var(--bg2)}
+.showcase{background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 16px 40px rgba(0,0,0,.25)}
+.showcase small{display:block;color:var(--muted);text-align:center;margin-top:8px;font-size:12px}
+section{padding:36px 0}
+h2{font-size:24px;margin:0 0 6px}
+.lead{color:var(--muted);margin:0 0 20px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;transition:transform .2s,border-color .2s}
+.cat:hover{transform:translateY(-3px);border-color:var(--accent)}
+.cat b{display:block;font-size:15px}
+.cat span{color:var(--muted);font-size:13px}
+.empty{background:var(--bg2);border:1px dashed var(--line);border-radius:16px;padding:28px;text-align:center;color:var(--muted)}
+.discord{background:linear-gradient(135deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:20px;padding:32px;text-align:center}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:13px;text-align:center}
+[hidden]{display:none!important}
+.links{display:flex;gap:22px;color:var(--muted);font-size:14px}.links a:hover{color:var(--text)}
+@media(max-width:760px){.links{display:none}}
+.eyebrow{display:inline-block;font-size:11px;letter-spacing:.14em;color:var(--accent);border:1px solid var(--line);background:var(--bg2);padding:4px 12px;border-radius:999px;margin-bottom:16px}
+.trust{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:6px}.trust span::before{content:'✓ ';color:var(--accent)}
+section:nth-of-type(even){background:var(--bg2);border-block:1px solid var(--line)}
+.wrap h2::before{content:'';display:inline-block;width:4px;height:1em;background:var(--accent);border-radius:2px;margin-inline-end:10px;vertical-align:-2px}
+button.btn{font:inherit;font-weight:600;color:var(--text)}button.btn.primary{color:#17191D}
+.ov{position:fixed;inset:0;background:rgba(10,11,13,.72);backdrop-filter:blur(4px);z-index:20;display:flex;justify-content:center;padding:max(20px,env(safe-area-inset-top)) 16px 20px;overflow:auto}
+.md{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;width:100%;max-width:420px;margin:auto}.md.big{max-width:640px}
+.md h2::before{display:none}
+.wide{display:block;width:100%;text-align:center;margin:0 0 10px!important}
+.note{color:var(--muted);font-size:12px}
+.lnk{background:none;border:0;color:var(--accent);cursor:pointer;font-size:13px;padding:6px 0;margin-inline-end:14px}
+.ah{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.tabs{display:flex;gap:8px;margin-bottom:16px}.chip.on{border-color:var(--accent);color:var(--accent)}
+.md input:not([type=checkbox]):not([type=file]),.md select{width:100%;background:var(--bg2);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px 12px;font:inherit;margin-bottom:10px}
+.fl{display:block;color:var(--muted);font-size:13px;margin-bottom:10px}
+.chk{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:12px;font-size:14px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.ci{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.tag{z-index:1}
+.grid.p{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
+.pc:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 14px 30px rgba(0,0,0,.3)}
+.th{height:150px;position:relative;display:flex;align-items:center;justify-content:center}
+.tag{position:absolute;top:10px;inset-inline-start:10px;font-size:11px;background:rgba(23,25,29,.7);border:1px solid var(--line);padding:2px 10px;border-radius:999px;color:var(--muted)}
+.tag.sale{inset-inline-start:auto;inset-inline-end:10px;color:#17191D;background:var(--accent);border-color:var(--accent)}
+.pb{padding:14px 16px 16px}
+.pb h3{margin:0 0 2px;font-size:16px}
+.pb .meta{color:var(--muted);font-size:12px;margin-bottom:10px}
+.fw{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.fw i{font-style:normal;font-size:11px;border:1px solid var(--line);border-radius:6px;padding:1px 8px;color:var(--accent)}
+.pr{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.pr b{font-size:17px}.pr s{color:var(--muted);font-size:12px;margin-inline-end:6px}
+.add{background:var(--accent);color:#17191D;border:0;border-radius:10px;padding:7px 14px;font-weight:600;font-size:13px;cursor:pointer;transition:transform .2s}
+.add:hover{transform:translateY(-1px)}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}.hero{padding-top:36px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+<a class="logo" href="#top">FIVEM<span>.</span>MARKET</a>
+<div class='links'><a href='#cats' data-k='nCat'>Categories</a><a href='#products' data-k='nProd'>Products</a></div><div class="tools">
+<button class="chip" id="cart">Cart 0</button>
+<button class="chip" id="cur">SAR</button>
+<button class='chip' id='adm' hidden>Admin</button><button class='chip' id='acct'>Login</button><button class="chip" id="lang">العربية</button>
+</div></div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+<div>
+<span class='eyebrow' data-k='eb'>PREMIUM DIGITAL MARKETPLACE</span>
+<h1 data-k="h1">BUILD YOUR WORLD.</h1>
+<p class="sub" data-k="sub">Premium FiveM Assets. One Destination.</p>
+<a class="btn primary" href="#cats" data-k="shop">Shop Now</a>
+<a class="btn ghost" href="#products" data-k="explore">Explore Products</a>
+<div class='trust'><span data-k='t1'>Secure Tebex checkout</span><span data-k='t2'>Instant delivery</span><span data-k='t3'>QBCore · ESX · Standalone</span></div>
+</div>
+<div class="showcase">
+<svg viewBox="0 0 400 180" width="100%" role="img" aria-label="Vehicle">
+<defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#8BBDEB" stop-opacity=".9"/><stop offset="1" stop-color="#383D46"/></linearGradient></defs>
+<path d="M30 120 L60 90 Q80 62 130 60 L240 60 Q285 62 315 92 L360 104 Q374 108 374 122 L374 134 L30 134Z" fill="url(#g)"/>
+<path d="M92 90 L128 68 L236 68 L280 90Z" fill="#17191D" opacity=".55"/>
+<circle cx="110" cy="136" r="24" fill="#17191D" stroke="#A7ADB7" stroke-width="5"/>
+<circle cx="300" cy="136" r="24" fill="#17191D" stroke="#A7ADB7" stroke-width="5"/>
+<ellipse cx="200" cy="168" rx="150" ry="6" fill="#000" opacity=".25"/>
+</svg>
+<small data-k="show">3D vehicle showcase goes here</small>
+</div></div></header>
+
+<section id="cats"><div class="wrap">
+<h2 data-k="catT">Categories</h2>
+<p class="lead" data-k="catS">Everything your server needs.</p>
+<div class="grid" id="catGrid"></div>
+</div></section>
+
+<section id="products"><div class="wrap">
+<div id="blocks"></div>
+</div></section>
+
+<section><div class="wrap"><div class="discord">
+<h2 data-k="dT">Join our Discord community</h2>
+<p class="lead" data-k="dS">Support, updates and announcements.</p>
+<a class="btn primary" href="#top" data-k="dB">Join Discord</a>
+</div></div></section>
+
+<div class='ov' id='lg' hidden><div class='md'><h2 data-k='lgT'>Sign in</h2><p class='lead' data-k='lgS'>Access your orders, downloads and favorites.</p>
+<button class='btn ghost wide' data-p='Google' data-k='gG'>Continue with Google</button>
+<button class='btn ghost wide' data-p='Discord' data-k='gD'>Continue with Discord</button>
+<p class='note' data-k='lgN'>Preview mode: real Google and Discord sign-in connects through Supabase in the full project. Owner access is given to the email set as OWNER_EMAIL.</p>
+<button class='lnk' id='own' data-k='lgO'>Preview as owner</button><button class='lnk' id='cl1' data-k='close'>Close</button></div></div>
+<div class='ov' id='ad' hidden><div class='md big'><div class='ah'><h2 data-k='adT'>Admin dashboard</h2><button class='chip' id='cl2' data-k='close'>Close</button></div>
+<div class='tabs'><button class='chip on' data-tab='pr' data-k='tP'>Products</button><button class='chip' data-tab='py' data-k='tY'>Payments</button></div>
+<div id='tpr'><input id='fn' placeholder='Name · الاسم'><select id='fc'></select>
+<input id='fp' type='number' step='0.01' min='0' placeholder='Price USD · السعر'><input id='fs' type='number' step='0.01' min='0' placeholder='Sale price USD · سعر الخصم'><input id='fv' placeholder='Version · الإصدار (1.0.0)'>
+<div class='chk'><label><input type='checkbox' class='fwc' value='QBCore' checked> QBCore</label><label><input type='checkbox' class='fwc' value='ESX'> ESX</label><label><input type='checkbox' class='fwc' value='Standalone'> Standalone</label></div>
+<label class='fl'>Image · صورة <input type='file' id='fi' accept='image/*'></label><label class='fl'>ZIP · ملف المنتج <input type='file' id='fz' accept='.zip'></label>
+<button class='btn primary' id='fa'>Add product · إضافة</button><div id='pl'></div></div>
+<div id='tpy' hidden><input id='tu' placeholder='Tebex store URL · رابط المتجر'><input id='tk' placeholder='Tebex public token · المفتاح العام'><button class='btn primary' id='ts'>Save · حفظ</button> <span class='note' id='tm'></span>
+<p class='note'>Secret key and webhook secret are never entered here. They live in server environment variables (TEBEX_SECRET, TEBEX_WEBHOOK_SECRET). · المفتاح السري وسر الويب هوك يوضعان في متغيرات البيئة بالسيرفر فقط.</p></div></div></div>
+<footer><div class="wrap" data-k="foot">© 2026 FiveM Marketplace. Test page.</div></footer>
+
+<script>
+var T={
+en:{h1:"BUILD YOUR WORLD.",sub:"Premium FiveM Assets. One Destination.",shop:"Shop Now",explore:"Explore Products",show:"3D vehicle showcase goes here",catT:"Categories",catS:"Everything your server needs.",dT:"Join our Discord community",dS:"Support, updates and announcements.",dB:"Join Discord",foot:"© 2026 FiveM Marketplace. Test page.",empty:"No products yet. Items added from the admin dashboard will appear here.",
+blocks:["Featured products","Best sellers","New arrivals","Special offers","Customer reviews"],
+cats:["Vehicles & Add-on Cars","Clothing & EUP","Scripts & Resources","Maps & MLO","Vehicle Liveries","Server Packages","Police & Emergency Packs","Gang & Mafia Systems","Developer Tools","Bundles & Special Offers"],items:"Browse",lang:"العربية",add:"Add to cart",demo:"Demo",sale:"Sale",cart:"Cart",nCat:"Categories",nProd:"Products",eb:"PREMIUM DIGITAL MARKETPLACE",t1:"Secure Tebex checkout",t2:"Instant delivery",t3:"QBCore · ESX · Standalone",login:"Login",out:"Logout",lgT:"Sign in",lgS:"Access your orders, downloads and favorites.",gG:"Continue with Google",gD:"Continue with Discord",lgN:"Preview mode: real Google and Discord sign-in connects through Supabase in the full project. Owner access is given to the email set as OWNER_EMAIL.",lgO:"Preview as owner",close:"Close",adT:"Admin dashboard",tP:"Products",tY:"Payments",adm:"Admin"},
+ar:{h1:"ابنِ عالمك.",sub:"أصول FiveM مميزة. وجهة واحدة.",shop:"تسوق الآن",explore:"استكشف المنتجات",show:"هنا يظهر عرض المركبة ثلاثي الأبعاد",catT:"الأقسام",catS:"كل ما يحتاجه سيرفرك.",dT:"انضم إلى مجتمعنا على ديسكورد",dS:"الدعم والتحديثات والإعلانات.",dB:"انضم إلى ديسكورد",foot:"© 2026 متجر FiveM. صفحة تجريبية.",empty:"لا توجد منتجات بعد. المنتجات التي تضيفها من لوحة الإدارة ستظهر هنا.",
+blocks:["منتجات مميزة","الأكثر مبيعًا","وصل حديثًا","عروض خاصة","آراء العملاء"],
+cats:["المركبات والسيارات المضافة","الملابس وEUP","السكربتات والموارد","الخرائط وMLO","ألوان المركبات","باقات السيرفرات","باقات الشرطة والطوارئ","أنظمة العصابات والمافيا","أدوات المطورين","الباقات والعروض الخاصة"],items:"تصفح",lang:"English",add:"أضف للسلة",demo:"تجريبي",sale:"خصم",cart:"السلة",nCat:"الأقسام",nProd:"المنتجات",eb:"متجر رقمي مميز",t1:"دفع آمن عبر Tebex",t2:"تسليم فوري",t3:"QBCore · ESX · Standalone",login:"تسجيل الدخول",out:"تسجيل الخروج",lgT:"تسجيل الدخول",lgS:"ادخل لعرض طلباتك وتحميلاتك ومفضلتك.",gG:"المتابعة عبر Google",gD:"المتابعة عبر Discord",lgN:"وضع المعاينة: تسجيل الدخول الحقيقي عبر Google وDiscord يتم ربطه بـ Supabase في المشروع الكامل. صلاحية المالك تُمنح للإيميل المحدد في OWNER_EMAIL.",lgO:"معاينة كمالك",close:"إغلاق",adT:"لوحة الإدارة",tP:"المنتجات",tY:"المدفوعات",adm:"الإدارة"}
+};
+var lang="en",cur="SAR",cartN=0,user=null;
+function $(i){return document.getElementById(i)}
+var P=[];
+var S=[[],[],[],[]];
+function money(u){return cur==="SAR"?(u*3.75).toFixed(2)+" SAR":"$"+u.toFixed(2)}
+function card(p,t){var i=lang==="ar"?1:0;return '<div class="pc"><div class="th" style="background:linear-gradient(145deg,hsl('+p.h+',35%,28%),hsl('+p.h+',25%,15%))">'+(p.img?'<img class="ci" src="'+p.img+'" alt="">':'')+(p.r?'':'<span class="tag">'+t.demo+'</span>')+(p.s?'<span class="tag sale">'+t.sale+'</span>':'')+'<svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#8BBDEB" stroke-width="2" opacity=".85"><path d="M32 6l22 12v28L32 58 10 46V18z"/><path d="M10 18l22 12 22-12M32 30v28"/></svg></div><div class="pb"><h3>'+p.n[i]+'</h3><div class="meta">'+t.cats[p.c]+' · v'+p.v+'</div><div class="fw">'+p.f.map(function(x){return '<i>'+x+'</i>'}).join("")+'</div><div class="pr"><div>'+(p.s?'<s>'+money(p.p)+'</s>':'')+'<b>'+money(p.s||p.p)+'</b></div><button class="add">'+t.add+'</button></div></div></div>'}
+document.addEventListener("click",function(e){if(e.target.classList.contains("add")){cartN++;render()}});
+function render(){
+var t=T[lang];
+document.documentElement.lang=lang;
+document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+document.querySelectorAll("[data-k]").forEach(function(e){e.textContent=t[e.dataset.k]});
+document.getElementById("lang").textContent=t.lang;
+document.getElementById("cur").textContent=cur;
+document.getElementById("cart").textContent=t.cart+" "+cartN;
+$("acct").textContent=user?t.out:t.login;$("adm").hidden=!(user&&user.role==="owner");
+var fv=$("fc").value;$("fc").innerHTML=t.cats.map(function(c,i){return '<option value="'+i+'">'+c+'</option>'}).join("");$("fc").value=fv||"0";
+$("pl").innerHTML=P.map(function(p,i){return p.x?'':'<div class="row"><span>'+p.n[lang==="ar"?1:0]+' <small class="note">'+(p.r?(p.z||""):"demo")+'</small></span><button class="chip" data-del="'+i+'">✕</button></div>'}).join("");
+document.getElementById("catGrid").innerHTML=t.cats.map(function(c){return '<a class="cat" href="#products"><b>'+c+'</b><span>'+t.items+' →</span></a>'}).join("");
+document.getElementById("blocks").innerHTML=t.blocks.map(function(b,k){var body=(S[k]&&S[k].filter(function(j){return !P[j].x}).length)?'<div class="grid p">'+S[k].filter(function(j){return !P[j].x}).map(function(j){return card(P[j],t)}).join("")+'</div>':'<div class="empty">'+t.empty+'</div>';return '<h2 style="margin:32px 0 14px">'+b+'</h2>'+body}).join("");
+}
+document.getElementById("lang").onclick=function(){lang=lang==="en"?"ar":"en";render()};
+document.getElementById("cur").onclick=function(){cur=cur==="SAR"?"USD":"SAR";render()};
+function show(i,v){$(i).hidden=!v}
+document.querySelectorAll("[data-p]").forEach(function(b){b.onclick=function(){user={role:"customer"};show("lg",0);render()}});
+$("acct").onclick=function(){if(user){user=null;show("ad",0);render()}else show("lg",1)};
+$("own").onclick=function(){user={role:"owner"};show("lg",0);render()};
+$("adm").onclick=function(){show("ad",1)};
+$("cl1").onclick=function(){show("lg",0)};$("cl2").onclick=function(){show("ad",0)};
+document.querySelectorAll("[data-tab]").forEach(function(b){b.onclick=function(){document.querySelectorAll("[data-tab]").forEach(function(x){x.classList.toggle("on",x===b)});$("tpr").hidden=b.dataset.tab!=="pr";$("tpy").hidden=b.dataset.tab!=="py"}});
+$("ts").onclick=function(){$("tm").textContent="✓ "+(lang==="ar"?"تم الحفظ لهذه الجلسة":"Saved for this session")};
+$("fa").onclick=function(){var n=$("fn").value.trim(),pr=parseFloat($("fp").value);if(!n||!pr){$("fn").focus();return}
+var f=$("fi").files[0],z=$("fz").files[0],fw=[].slice.call(document.querySelectorAll(".fwc:checked")).map(function(x){return x.value});
+function done(img){var s=parseFloat($("fs").value);P.push({n:[n,n],c:+$("fc").value,f:fw.length?fw:["Standalone"],v:$("fv").value||"1.0.0",p:pr,s:(s>0&&s<pr)?s:0,h:210,r:1,img:img,z:z?z.name:""});S[2].unshift(P.length-1);S[0].unshift(P.length-1);["fn","fp","fs","fv"].forEach(function(i){$(i).value=""});$("fi").value="";$("fz").value="";render()}
+if(f){var rd=new FileReader();rd.onload=function(){done(rd.result)};rd.readAsDataURL(f)}else done("")};
+document.addEventListener("click",function(e){var d=e.target.dataset&&e.target.dataset.del;if(d!==undefined){P[d].x=1;render()}});
+render();
+</script>
+</body>
+</html>
